@@ -27,6 +27,8 @@ const Controls = {
     Controls.buttonSoundOn.classList.remove('hide');
   },
 };
+
+let minutes;
 const Timmer = {
   minutesDisplay: document.querySelector('.min'),
   segDisplay: document.querySelector('.seg'),
@@ -44,10 +46,12 @@ const Timmer = {
       let seconds = Number(Timmer.segDisplay.textContent);
 
       if (seconds <= 0) {
-        seconds = 60;
+        seconds = 10;
+        minutes = minutes - 1;
+        console.log(minutes);
       }
-
       Timmer.segDisplay.textContent = String(seconds - 1).padStart(2, '0');
+      Timmer.minutesDisplay.textContent = String(minutes - 1).padStart(2, '0');
 
       Timmer.countDown();
     }, 1000);
